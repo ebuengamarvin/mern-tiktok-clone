@@ -8,7 +8,19 @@
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "format": "prettier --write \"src/**/*.+(ts|tsx|json|css|md)\""
+    "format": "prettier --write \"src/**/*.+(ts|tsx|json|css|md)\"",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "src/**/*.+(ts|tsx)": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ],
+    "src/**/*.+(json|css|md)": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -24,6 +36,8 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
+    "husky": "^8.0.0",
+    "lint-staged": "^14.0.1",
     "prettier": "3.0.3",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
