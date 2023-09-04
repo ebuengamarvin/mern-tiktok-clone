@@ -1,31 +1,15 @@
-import { Box } from '@mui/material';
-import Video from './components/Video';
-import './App.css';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import Feed from './components/Feed/Feed';
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <Box component="div" className="app">
-      <Box component="div" className="app__videos">
-        <Video
-          channel="StillOne"
-          description="Still One Singles"
-          song="Gaganti Ka Lamang Ba - Still One"
-          url="https://cdn.videvo.net/videvo_files/video/premium/video0394/large_watermarked/902-1_902-0408-PD2_preview.mp4"
-          likes={1400}
-          shares={20}
-          messages={60}
-        />
-        <Video
-          channel="JohsuaMari"
-          description="Joshua Mari Singles"
-          song="Gintong Alaala - Joshua Mari"
-          url="https://joy.videvo.net/videvo_files/video/premium/partners0041/large_watermarked/BB_8686ec61-9c1f-45c4-ace3-01180f66191b_preview.mp4"
-          likes={2036}
-          shares={128}
-          messages={153}
-        />
-      </Box>
-    </Box>
+    <QueryClientProvider client={queryClient}>
+      <Feed />
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   );
 }
 
